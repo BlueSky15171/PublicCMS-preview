@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
-import com.publiccms.common.interceptor.web.WebContextInterceptor;
+import com.publiccms.common.interceptor.WebContextInterceptor;
 import com.publiccms.common.view.WebFreeMarkerViewResolver;
 import com.publiccms.common.view.web.DefaultWebFreeMarkerView;
 import com.publiccms.common.view.web.WebFreeMarkerView;

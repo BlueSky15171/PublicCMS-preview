@@ -6,13 +6,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import com.sanluan.common.base.Base;
-
 /**
  * StreamUtils 流输出工具类
  * 
  */
-public class StreamUtils extends Base {
+public class StreamUtils {
     public static final int BUFFER_SIZE = 1024 * 1024;
 
     public static BufferedOutputStream getBufferedOutputStream(OutputStream outputStream) {
@@ -68,13 +66,13 @@ public class StreamUtils extends Base {
             }
             bufferedOutputStream.flush();
         } finally {
-            if (notEmpty(bufferedInputStream) && closeInput) {
+            if (null != bufferedInputStream && closeInput) {
                 try {
                     bufferedInputStream.close();
                 } catch (IOException e) {
                 }
             }
-            if (notEmpty(bufferedOutputStream) && clossOutput) {
+            if (null != bufferedOutputStream && clossOutput) {
                 try {
                     bufferedOutputStream.close();
                 } catch (IOException e) {

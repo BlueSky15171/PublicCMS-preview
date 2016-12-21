@@ -20,6 +20,6 @@ public class ResourceInitializer implements WebApplicationInitializer {
         registration.addMapping(new String[] { "/resource/*", "/favicon.ico" });
         Dynamic webRegistration = servletContext.addServlet("webServlet", new HttpRequestHandlerServlet());
         webRegistration.setLoadOnStartup(0);
-        webRegistration.addMapping(new String[] { "/web/*" });
+        webRegistration.addMapping(new String[] { "/webfile/*" });
     }
 }

@@ -1,4 +1,4 @@
-package com.publiccms.common.interceptor.web;
+package com.publiccms.common.interceptor;
 
 import static com.publiccms.common.base.AbstractController.clearUserToSession;
 import static com.publiccms.common.base.AbstractController.getUserFromSession;
@@ -62,7 +62,9 @@ public class WebContextInterceptor extends BaseInterceptor {
                                 user.setPassword(null);
                                 setUserToSession(session, user);
                             } else {
-                                sysUserTokenService.delete(userToken.getAuthToken());
+                                if (null != userToken) {
+                                    sysUserTokenService.delete(userToken.getAuthToken());
+                                }
                                 cancleCookie(contextPath, response, getCookiesUser(), null);
                             }
                         } catch (NumberFormatException e) {

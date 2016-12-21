@@ -3,7 +3,6 @@ package com.publiccms.views.method.tools;
 import static com.sanluan.common.tools.TemplateModelUtils.converString;
 import static org.apache.http.util.EntityUtils.consume;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +12,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -42,8 +42,8 @@ public class GetHtmlMethod extends BaseMethod {
         String body = getString(1, arguments);
         String html = null;
         if (notEmpty(url)) {
-            CloseableHttpResponse response = null;
             try (CloseableHttpClient httpclient = HttpClients.createDefault();) {
+                HttpUriRequest request;
                 if (notEmpty(paramters) || notEmpty(body)) {
                     HttpPost httppost = new HttpPost(url);
                     if (notEmpty(paramters)) {
@@ -57,32 +57,26 @@ public class GetHtmlMethod extends BaseMethod {
                     } else {
                         httppost.setEntity(new StringEntity(body, DEFAULT_CHARSET));
                     }
-                    response = httpclient.execute(httppost);
+                    request = httppost;
                 } else {
-                    response = httpclient.execute(new HttpGet(url));
+                    request = new HttpGet(url);
                 }
-                HttpEntity entity = response.getEntity();
-                if (notEmpty(entity)) {
-                    html = EntityUtils.toString(entity, DEFAULT_CHARSET);
-                    consume(entity);
+                try (CloseableHttpResponse response = httpclient.execute(request)) {
+                    HttpEntity entity = response.getEntity();
+                    if (notEmpty(entity)) {
+                        html = EntityUtils.toString(entity, DEFAULT_CHARSET);
+                        consume(entity);
+                    }
                 }
             } catch (Exception e) {
                 log.error(e.getMessage());
                 return null;
-            } finally {
-                try {
-                    if (notEmpty(response)) {
-                        response.close();
-                    }
-                } catch (IOException e) {
-                    log.error(e.getMessage());
-                }
             }
             return html;
         }
         return null;
     }
-    
+
     @Override
     public boolean needAppToken() {
         return true;

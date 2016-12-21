@@ -1,4 +1,4 @@
-package com.publiccms.common.interceptor.admin;
+package com.publiccms.common.interceptor;
 
 import static com.publiccms.common.base.AbstractController.getAdminFromSession;
 import static com.publiccms.common.base.AbstractController.setAdminToSession;

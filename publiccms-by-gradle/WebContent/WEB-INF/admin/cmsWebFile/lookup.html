@@ -1,5 +1,6 @@
 <#function useFile filePath fileName>
-	<#switch fileName?keep_after_last('.')>
+	<#assign fileSuffix = fileName?keep_after_last('.')/>
+	<#switch fileSuffix>
 		<#case 'css'>
 			<#return r'<link href="${site.sitePath}'+filePath+'" rel="stylesheet"/>'/><#break>
 		<#case 'js'>
@@ -21,7 +22,7 @@
 		<#case 'avi'>
 		<#case 'wmv'>
 		<#case 'mp4'>
-			<#return r'<video controls="controls"><source src="${site.sitePath}'+filePath+'" type="video/${fileName?keep_after('.')}" />'/><#break>
+			<#return r'<video controls="controls"><source src="${site.sitePath}'+filePath+'" type="video/${fileSuffix}" />'/><#break>
 		<#case 'wav'>
 		<#case 'acc'>
 		<#case 'mid'>
@@ -29,7 +30,7 @@
 		<#case 'wma'>
 		<#case 'mpga'>
 		<#case 'mp3'>
-			<#return r'<video controls="controls"><source src="${site.sitePath}'+filePath+'" type="video/${fileName?keep_after('.')}" />'/><#break>
+			<#return r'<audio controls="controls" src="${site.sitePath}'+filePath+'"></audio>'/><#break>
 		<#case 'rar'>
 		<#case 'zip'>
 		<#case 'html'>

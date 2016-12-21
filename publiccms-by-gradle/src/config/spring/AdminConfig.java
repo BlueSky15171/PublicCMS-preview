@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
-import com.publiccms.common.interceptor.admin.AdminContextInterceptor;
+import com.publiccms.common.interceptor.AdminContextInterceptor;
 import com.publiccms.common.view.admin.AdminFreeMarkerView;
 import com.publiccms.logic.component.cache.CacheComponent;
 

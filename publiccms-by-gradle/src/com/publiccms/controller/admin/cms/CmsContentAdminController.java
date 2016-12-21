@@ -191,7 +191,7 @@ public class CmsContentAdminController extends AbstractController {
 
         List<ExtendField> modelExtendList = cmsModel.getExtendList();
         Map<String, String> map = getExtentDataMap(contentParamters.getModelExtendDataList(), modelExtendList);
-        if (notEmpty(extendService.getEntity(category.getExtendId()))) {
+        if (null != category && notEmpty(extendService.getEntity(category.getExtendId()))) {
             List<SysExtendField> categoryExtendList = extendFieldService.getList(category.getExtendId());
             Map<String, String> categoryMap = getSysExtentDataMap(contentParamters.getCategoryExtendDataList(),
                     categoryExtendList);

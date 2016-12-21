@@ -46,10 +46,10 @@ public abstract class AbstractTemplateDirective extends BaseTemplateDirective {
         } else if (needUserToken() && empty(user = getUser(handler))) {
             handler.put("error", "needLogin").render();
         } else {
-            if (needAppToken()) {
+            if (null != app) {
                 request.getParameterMap().put("appId", new String[] { String.valueOf(app.getId()) });
             }
-            if (needUserToken()) {
+            if (null != user) {
                 request.getParameterMap().put("userId", new String[] { String.valueOf(user.getId()) });
             }
             execute(handler);
