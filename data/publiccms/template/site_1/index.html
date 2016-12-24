@@ -1,3 +1,4 @@
+<@compress single_line=true>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -17,7 +18,7 @@
 		<div class="data-list left-content">
 <@import path="/ftl/tools.ftl" namespace="t"/>
 <@_modelList>
-	<#list page.list?reverse as model>
+	<#list page.list as model>
 		<@_contentList modelId=model.id count=3>
 			<#if page.totalCount gt 0>
 				<h3>最新${model.name!}</h3>
@@ -42,6 +43,7 @@
 			</div>
 			<@_includePlace path="/category/list.html/3435e9a7-565a-4f93-8670-9c272a1d51cc.html"/> <#-- 精彩图集 -->
             <@_includePlace path="/index.html/2ac8682d-d844-4d95-921d-8c92b89e515c.html"/> <#-- 开源中国 -->
+			<@_includePlace path="/index.html/30ef2211-1197-4725-b253-e5dc12af1b21.html"/> <#-- github -->
 		</aside>
 	</div>
 	<div class="clearfix-before"></div>
@@ -49,3 +51,4 @@
 <@_includePlace path="/index.html/6369e868-50b9-4245-9d39-fd440384a685.html"/> <#-- 尾部Footer -->
 </body>
 </html>
+</@compress>

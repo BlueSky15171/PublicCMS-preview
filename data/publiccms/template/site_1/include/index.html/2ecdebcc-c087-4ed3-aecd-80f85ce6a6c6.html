@@ -58,6 +58,7 @@
 				$('header').addClass('fixed-position');
 			}
 		});
+		$.cookie.raw = true;
 		var cookie = $.cookie("PUBLICCMS_USER");
 		if (cookie) {
 			var userdata = cookie.split(';;');

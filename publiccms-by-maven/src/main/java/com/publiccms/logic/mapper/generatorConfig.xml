@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- 数据库驱动包路径 -->
+	<!-- file path of database driver -->
+	<classPathEntry
+		location="C:/Users/zhang/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.40/ef2a2ceab1735eaaae0b5d1cccf574fb7c6e1c52/mysql-connector-java-5.1.40.jar" />
+	<context id="context1" autoDelimitKeywords="true">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<jdbcConnection
+			connectionURL="jdbc:mysql://127.0.0.1/public_cms?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=round"
+			driverClass="com.mysql.jdbc.Driver" password="publiccms_password"
+			userId="publiccms" />
+		<javaModelGenerator targetPackage="com.publiccms.entities.cms"
+			targetProject="publiccms-by-gradle/needToDelete/" />
+		<sqlMapGenerator targetPackage="com.publiccms.logic.mapper.cms.xml"
+			targetProject="publiccms-by-gradle/src/" />
+		<javaClientGenerator targetPackage="com.publiccms.logic.mapper.cms"
+			targetProject="publiccms-by-gradle/src/" type="XMLMAPPER" />
+		<table tableName="cms_content" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableDeleteByPrimaryKey="false"
+			enableUpdateByPrimaryKey="false" enableInsert="false">
+		</table>
+	</context>
+</generatorConfiguration>

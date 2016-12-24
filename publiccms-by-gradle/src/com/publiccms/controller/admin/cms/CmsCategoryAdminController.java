@@ -122,9 +122,9 @@ public class CmsCategoryAdminController extends AbstractController {
         service.updateTagTypeIds(entity.getId(), arrayToCommaDelimitedString(tagTypeIds));// 更新保存标签分类
 
         List<CmsCategoryModelParamters> categoryModelList = categoryParamters.getCategoryModelList();
-        if(notEmpty(categoryModelList)){
+        if (notEmpty(categoryModelList)) {
             for (CmsCategoryModelParamters cmsCategoryModelParamters : categoryModelList) {
-                if(notEmpty(cmsCategoryModelParamters.getCategoryModel())){
+                if (notEmpty(cmsCategoryModelParamters.getCategoryModel())) {
                     cmsCategoryModelParamters.getCategoryModel().getId().setCategoryId(entity.getId());
                     if (cmsCategoryModelParamters.isUse()) {
                         categoryModelService.updateCategoryModel(cmsCategoryModelParamters.getCategoryModel());
@@ -138,8 +138,7 @@ public class CmsCategoryAdminController extends AbstractController {
 
         CmsCategoryType categoryType = categoryTypeService.getEntity(entity.getTypeId());
         if (notEmpty(categoryType) && notEmpty(categoryType.getExtendId())) {
-            List<SysExtendField> categoryTypeExtendList = extendFieldService
-                    .getList(categoryType.getExtendId());
+            List<SysExtendField> categoryTypeExtendList = extendFieldService.getList(categoryType.getExtendId());
             Map<String, String> map = getSysExtentDataMap(categoryParamters.getExtendDataList(), categoryTypeExtendList);
             attribute.setData(getExtendString(map));
         } else {
@@ -170,9 +169,9 @@ public class CmsCategoryAdminController extends AbstractController {
             for (Integer id : ids) {
                 move(site, id, parentId);
             }
-            logOperateService
-                    .save(new LogOperate(site.getId(), getAdminFromSession(session).getId(), LogLoginService.CHANNEL_WEB_MANAGER,
-                            "move.category", getIpAddress(request), getDate(), join(ids, ',') + " to " + parentId));
+            logOperateService.save(new LogOperate(site.getId(), getAdminFromSession(session).getId(),
+                    LogLoginService.CHANNEL_WEB_MANAGER, "move.category", getIpAddress(request), getDate(),
+                    new StringBuilder(join(ids, ',')).append(" to ").append(parentId).toString()));
         }
         return TEMPLATE_DONE;
     }
@@ -216,7 +215,7 @@ public class CmsCategoryAdminController extends AbstractController {
             }
             logOperateService.save(new LogOperate(site.getId(), getAdminFromSession(session).getId(),
                     LogLoginService.CHANNEL_WEB_MANAGER, "static.category", getIpAddress(request), getDate(),
-                    join(ids, ',') + ",pageSize:" + (empty(max) ? 1 : max)));
+                    new StringBuilder(join(ids, ',')).append(",pageSize:").append((empty(max) ? 1 : max)).toString()));
         }
         return TEMPLATE_DONE;
     }

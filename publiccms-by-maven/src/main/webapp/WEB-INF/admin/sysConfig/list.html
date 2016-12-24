@@ -1,0 +1,38 @@
+<h2 class="contentTitle">站點配置</h2>
+<div class="pageContent">
+<@_sysConfigList>
+	<div class="tabs" currentIndex="0" eventType="click">
+		<div class="tabsHeader">
+			<div class="tabsHeaderContent">
+			<#list list>
+				<ul>
+				<#items as a>
+					<li><a href="sysConfig/itemList.html?code=${a.code!}" class="j-ajax">${a.description!}</a></li>
+				</#items>
+					<li><a href="javascript:;">新增配置</a></li>
+				</ul>
+			</#list>
+			</div>
+		</div>
+		<div class="tabsContent">
+			<#list list as a>
+				<div>
+					<#if a?is_first>
+						<#assign code=a.code/>
+						<#include "itemList.html"/>
+					</#if>
+				</div>
+			<#else>
+				<div>
+					没有配置
+				</div>
+			</#list>
+			<div>
+				<#assign code=''/>
+				<#assign closeCurrent=''/>
+				<#include "add.html"/>
+			</div>
+		</div>
+	</div>
+</@_sysConfigList>
+</div>

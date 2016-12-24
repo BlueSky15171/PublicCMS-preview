@@ -1,0 +1,24 @@
+<div class="pageFormContent">
+	<div class="unit">
+		<p>${code}</p>
+		<p>
+			<@_sysConfig code=code>
+				<a class="button" href="sysConfig/addItem.html?code=${code}&navTabId=sysConfig/addItem" target="navTab" rel="sysConfig/addItem">增加配置项</a>
+				<a class="button" href="sysConfig/delete.do?code=${code}&navTabId=sysConfig/list" title="确定要删除该配置吗?" target="ajaxTodo">删除配置</a>
+			</@_sysConfig>
+		</p>
+	</div>
+<@_sysConfigItemList code=code>
+	<#list list as a>
+	<div class="unit">
+		<p>${a.description}:${a.code}</p>
+		<p>
+			<#if a.customed>
+				<a class="button" href="sysConfig/addItem.html?code=${code}&itemCode=${a.code}&navTabId=sysConfig/addItem" target="navTab" rel="sysConfig/addItem">修改配置项</a>
+				<a class="button" href="sysConfig/deleteItem.do?code=${code}&itemCode=${a.code}&navTabId=sysConfig/list" title="确定要删除该配置项吗?" target="ajaxTodo">删除配置项</a>
+			</#if>
+		</p>
+	</div>
+	</#list>
+</@_sysConfigItemList>
+</div>

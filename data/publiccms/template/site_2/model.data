@@ -1,1 +1,1 @@
-{"9":{"id":"9","parentId":null,"name":"代码","templatePath":null,"hasChild":false,"onlyUrl":false,"hasImages":false,"hasFiles":false,"extendList":[{"id":{"code":"result"},"required":false,"maxlength":null,"sort":0,"name":"效果","description":"","inputType":"textarea","defaultValue":"","dictionaryType":null,"dictionaryId":null}]}}
+{"10":{"id":"10","parentId":null,"name":"文章","templatePath":null,"hasChild":false,"onlyUrl":false,"hasImages":false,"hasFiles":false,"extendList":[]}}

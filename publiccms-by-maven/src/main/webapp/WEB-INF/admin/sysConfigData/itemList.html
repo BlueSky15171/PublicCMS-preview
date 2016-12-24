@@ -1,0 +1,19 @@
+<div class="pageFormContent">
+<@_sysConfigItemList code=code>
+	<#list list as a>
+	<div class="unit">
+		<p>
+			${a.description}
+		</p>
+		<p>
+		<@_sysAuthorized roleIds=admin.roles url='sysConfigData/config'>
+			<label>
+				<a class="button" href="sysConfigData/addItem.html?code=${code}&itemCode=${a.code}" target="navTab" rel="sysConfigData/config">修改配置</a>
+			</label>
+		</@_sysAuthorized>
+		</p>
+	</div>
+	<div class="divider"></div>
+	</#list>
+</@_sysConfigItemList>
+</div>
