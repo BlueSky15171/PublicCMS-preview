@@ -7,12 +7,12 @@ apply plugin: "war"
 webAppDirName = "WebContent"
 sourceSets{
     main{
-        java { srcDir "src" }
-        resources { srcDir "src" }
+        java { srcDir "src/main/java" }
+        resources { srcDir "src/main/resources" }
     }
     test{
-        java { srcDir "test" }
-        resources { srcDir "test" }
+        java { srcDir "src/test/java" }
+        resources { srcDir "src/main/resources" }
     }
 }
 [compileJava]*.options*.encoding = "UTF-8"
@@ -21,8 +21,9 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 repositories {
-    mavenLocal()
-    mavenCentral()
+    //mavenLocal()
+    //mavenCentral()
+    jcenter()
 }
 
 ext {
